@@ -1,0 +1,45 @@
+<div>
+    <app-quizconfig  [data]="dataquiz.config"></app-quizconfig>
+</div>
+<div>
+    <button (click)="changermode('quiz')" type="button" class="btn btn-outline-primary">Quiz</button>
+    <button [disabled]="!dataquiz.config.allowReview" (click)="changermode('review')" type="button" class="btn btn-outline-secondary">Review</button>
+    <button (click)="changermode('submit')" type="button" class="btn btn-outline-success">Submit</button>
+
+</div>
+<div class="card" [hidden]="mode!='quiz'">
+    
+    <div class="card-body" style="text-align: center;">
+<h1>{{dataquiz.name}}</h1>
+<h3>{{dataquiz.description}}</h3>
+@for (q of dataquiz.questions; track $index) {
+    @if (page==$index) {
+<app-question [dataquestion]="q"></app-question>
+}
+}
+</div>
+<app-pagination (notifier)="recuperer($event)" ></app-pagination>
+</div>
+<div class="card" [hidden]="mode!='review'">
+   
+    <div class="card-body" style="text-align: center;">
+         Review
+         @for (q of dataquiz.questions; track $index) {
+            
+        <app-question [mode]="mode"  [dataquestion]="q"></app-question>
+        
+        }
+         </div>
+</div>
+
+
+<div class="card" [hidden]="mode!='submit'">
+   
+    <div class="card-body" style="text-align: center;">
+        @for (q of dataquiz.questions; track $index) {
+            
+            <app-question [mode]="mode"  [dataquestion]="q"></app-question>
+            
+            }
+        </div>
+        </div>

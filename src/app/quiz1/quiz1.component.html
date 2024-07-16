@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar"  [style]="'width: '+((page+1)/dataquiz.questions.length)*100+'%'">{{((page+1)/dataquiz.questions.length)*100}} %</div>
+      </div>
+    <div class="card-body" style="text-align: center;">
+<h1>{{dataquiz.name}}</h1>
+<h3>{{dataquiz.description}}</h3>
+</div>
+@for (q of dataquiz.questions; track $index) {
+<div [hidden]="$index!==page">
+   <p>{{q.name}}</p>
+   @for (o of q.options; track $index) {
+    <div><input type="checkbox" />{{o.name}}</div>
+   }
+</div>
+
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li (click)="goto(page-1)"  [class]=" page==0?'page-item disabled':'page-item' "><a class="page-link" href="#">Previous</a></li>
+      <li (click)="goto(1)"  class="page-item"><a class="page-link" href="#">1</a></li>
+      <li (click)="goto(2)"  class="page-item"><a class="page-link" href="#">2</a></li>
+      <li (click)="goto(3)"  class="page-item"><a class="page-link" href="#">3</a></li>
+      <li (click)="goto(page+1)" class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav> 
+</div>

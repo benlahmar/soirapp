@@ -1,0 +1,9 @@
+<div [class]="isselected() ?'alert alert-success':'alert alert-danger'">
+    {{dataquestion.name}}
+    @if (mode!=='review') {
+    @for (r of dataquestion.options; track $index) {
+    
+        <app-option [mode]="mode" [rep]="r"></app-option>
+    }
+}
+</div>

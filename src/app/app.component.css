@@ -1,0 +1,9 @@
+.abc{
+    width: 200px;
+    background-color: gold;
+    height: 200px;
+    text-align: center;
+    padding: auto;
+    float: left;
+    margin: 10px;
+}
