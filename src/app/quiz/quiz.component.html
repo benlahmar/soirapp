@@ -7,6 +7,10 @@
     <button (click)="changermode('submit')" type="button" class="btn btn-outline-success">Submit</button>
 
 </div>
+<div>
+    {{date | date:'yy-MM-dd   hh:mm:ss'}}
+</div>
+<h1>{{thematique}}</h1>
 <div class="card" [hidden]="mode!='quiz'">
     
     <div class="card-body" style="text-align: center;">
